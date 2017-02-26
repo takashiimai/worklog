@@ -15,6 +15,7 @@
             $params['param2'] = $b;
             $params['param3'] = $c;
             $params['member'] = $ret;
+            $this->log->info($params);
             $this->view('test_aaa', $params);
         }
     }

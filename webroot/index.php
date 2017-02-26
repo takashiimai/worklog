@@ -120,13 +120,20 @@ class main {
         $config_env    = $this->_config_env();
         $ctrl->config = array_merge($config_common, $config_env);
 
+        // ライブラリロード
+        if (isset($ctrl->config['library']) && is_array($ctrl->config['library'])) {
+            foreach ($ctrl->config['library'] as $libary) {
+                $ctrl->library($libary);
+            }
+        }
+
         // データベース設定
         $this->_database();
 
         //
-        $ctrl->directory = $directory;
-        $ctrl->controller = $controller;
-        $ctrl->action = $action;
+        $ctrl->directory = $this->directory;
+        $ctrl->controller = $this->controller;
+        $ctrl->action = $this->action;
 
         // メソッド実行
         call_user_func_array(array($ctrl, $action), $this->params);

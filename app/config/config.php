@@ -1,4 +1,8 @@
 <?php
 
-$config['ABCDEF'] = 'XYZ';
+// 使用するライブラリ
+$config['library'] = array(
+    'log',
+);
+
 
