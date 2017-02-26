@@ -37,6 +37,9 @@ class core {
         $fn = APP_PATH . "/model/{$model}.php";
         if (file_exists($fn)) {
             require_once($fn);
+            if (strpos($model, '/') !== FALSE) {
+                $model = preg_replace("/.*\//", '', $model);
+            }
             $this->{$model} = new $model;
         }
     }

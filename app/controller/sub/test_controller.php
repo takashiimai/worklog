@@ -12,6 +12,7 @@
             $params['param1'] = $a;
             $params['param2'] = $b;
             $params['param3'] = $c;
+            $params['member'] = $ret;
             $this->view('test_aaa', $params);
         }
         public function aaa($a = "", $b = '', $c = '') {
@@ -20,7 +21,14 @@
             $params['param1'] = $a;
             $params['param2'] = $b;
             $params['param3'] = $c;
+            $params['member'] = $ret;
             $this->view('test_aaa', $params);
+        }
+        public function bbb($a = "", $b = '', $c = '') {
+            $this->model("sub/test99_model");
+            $this->test99_model->make2();
+            echo $this->test99_model->abc;
+            exit;
         }
     }
 

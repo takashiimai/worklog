@@ -29,6 +29,7 @@ class index_controller extends app_controller {
         $params['param1'] = $a;
         $params['param2'] = $b;
         $params['param3'] = $c;
+        $params['member'] = $ret;
         $this->view('test_aaa', $params);
     }
 }
