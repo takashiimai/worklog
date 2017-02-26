@@ -2,7 +2,7 @@
 
 class index_controller extends app_controller {
 
-    public function index() {
+    public function index($a = "", $b = '', $c = '') {
 //            echo "INDEX-INDEXメソッド";
 //            var_dump($this->config);
 //            var_dump($GLOBALS['databases']);
@@ -24,12 +24,11 @@ class index_controller extends app_controller {
         $ret = $this->asobi->select('SELECT * FROM plan');
         $this->log->info($ret);
 
-        $params = array(
-            'aaaa' => 'あああ',
-            'bbbb' => 'かかか',
-            'cccc' => 'さささ',
-            'member' => $ret,
-        );
+        $params['controller'] = $this->controller;
+        $params['action'] = $this->action;
+        $params['param1'] = $a;
+        $params['param2'] = $b;
+        $params['param3'] = $c;
         $this->view('test_aaa', $params);
     }
 }

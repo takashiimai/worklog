@@ -4,8 +4,6 @@ define('SYSTEM_PATH',   dirname(__FILE__) . '/../core');
 define('APP_PATH',      dirname(__FILE__) . '/../app');
 
 require_once(SYSTEM_PATH . '/core_class.php');
-//    require_once(SYSTEM_PATH . '/controller/core_controller.php');
-//    require_once(SYSTEM_PATH . '/model/core_model.php');
 require_once(APP_PATH .    '/controller/app_controller.php');
 require_once(APP_PATH .    '/model/app_model.php');
 
@@ -124,6 +122,11 @@ class main {
 
         // データベース設定
         $this->_database();
+
+        //
+        $ctrl->directory = $directory;
+        $ctrl->controller = $controller;
+        $ctrl->action = $action;
 
         // メソッド実行
         call_user_func_array(array($ctrl, $action), $this->params);

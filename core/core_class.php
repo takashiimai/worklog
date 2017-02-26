@@ -4,6 +4,9 @@
 class core {
 
     public $config = array();
+    public $directory = '';
+    public $controller = '';
+    public $action = '';
 
     /**
      * construct
