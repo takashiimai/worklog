@@ -41,6 +41,18 @@ class db {
     }
 
     /**
+     * クエリー実行
+     *
+     * @param   string  クエリー
+     * @param   array   WHEREのパラメータ ※キーはプレースホルダで指定
+     * @return  array
+     */
+    public function query($sql = NULL, $parameters = array()) {
+        $stmt = $this->db->prepare($sql);
+        $stmt->execute($parameters);
+    }
+
+    /**
      * データベースからSELECTする
      *
      * @param   string  クエリー
@@ -64,6 +76,7 @@ class db {
         }
     }
 
+
     /**
      * データベースにINSERTする
      *
@@ -82,7 +95,7 @@ class db {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($parameters);
 
-        $sql = 'SELECT last_insert_id() AS id FROM ' . $tblname;
+        $sql = 'SELECT last_insert_id() AS id';
         $stmt = $this->db->query($sql);
         $result = $stmt->fetch();
         $this->last_id = $result['id'];
