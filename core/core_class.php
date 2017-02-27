@@ -62,7 +62,7 @@ class core {
             $fn = SYSTEM_PATH . "/library/{$library}.php";
             if (file_exists($fn)) {
                 require_once($fn);
-                $this->{$alias} = new $library();
+                $this->{$alias} = new $library;
             }
         }
     }
