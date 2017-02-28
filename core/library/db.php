@@ -3,6 +3,8 @@
 class db {
 
     protected $db = NULL;
+    protected $last_id = NULL;
+    protected $found_rows = NULL;
 
     /**
      * construct
@@ -37,11 +39,33 @@ class db {
         $user = $GLOBALS['databases'][ $key ]['username'];
         $pwd  = $GLOBALS['databases'][ $key ]['password'];
         $this->db = new PDO($dsn, $user, $pwd);
-//        $this->pdo->query('SET NAMES utf8');
+        $this->db->query('SET NAMES ' . $GLOBALS['databases'][ $key ]['char_set']);
     }
 
     /**
-     * クエリー実行
+     * テーブルの全件数を返却する
+     *
+     * @param   
+     * @param   
+     * @return  integer
+     */
+    public function get_found_rows() {
+        return $this->found_rows;
+    }
+
+    /**
+     * autoincrement IDを返却する
+     *
+     * @param   
+     * @param   
+     * @return  integer
+     */
+    public function get_last_insert_id() {
+        return $this->last_id;
+    }
+
+    /**
+     * 
      *
      * @param   string  クエリー
      * @param   array   WHEREのパラメータ ※キーはプレースホルダで指定
@@ -51,6 +75,7 @@ class db {
         $stmt = $this->db->prepare($sql);
         $stmt->execute($parameters);
     }
+
 
     /**
      * データベースからSELECTする
