@@ -6,11 +6,11 @@
 
         <div class="login">
 
-            <div ng-bind="msg" ng-if="msg_flg"></div>
-
             <form name="login_form" ng-submit="onsubmit()" novalidate>
 
-                <h3 class="title is-4">工数管理システム</h3>
+                <h3 class="title is-3">工数管理システム ログイン</h3>
+
+                <div class="notification is-warning" ng-bind="message" ng-if="message_flg"></div>
 
                 <label class="label">メールアドレス</label>
                 <p class="control">
@@ -32,9 +32,6 @@
 
         </div>
 
-        <div>
-            <button ng-click="check();">チェック</button>
-        </div>
     </div>
 
 </div>

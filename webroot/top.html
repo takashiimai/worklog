@@ -2,9 +2,26 @@
 
 <div class="wrap">
 
-    <div class="contents" ng-controller="loginController">
+    <div class="contents" ng-controller="topController">
 
-トップ画面
+        <div class="top">
+
+            <div class="columns is-flex-mobile  is-gapless">
+                <div class="column">
+                    <p class="left">工数管理システム</p>
+                </div>
+                <div class="column">
+                    <p class="right">
+                        <span ng-bind="user.name"></span>
+                        <span><button class="button" ng-click="logout()">ログアウト</button></span>
+                    </p>
+                </div>
+            </div>
+
+
+
+
+        </div>
 
     </div>
 
