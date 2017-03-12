@@ -15,7 +15,10 @@ class core {
      * @return
      */
     public function __construct() {
-//        $this->library('log');
+        $this->library('log');
+        $this->library('db');
+        $this->library('request');
+        $this->library('session');
     }
 
     /**
@@ -30,7 +33,7 @@ class core {
     /**
      * モデルロード
      *
-     * @param
+     * @param   string  モデル名
      * @return
      */
     public function model($model) {
@@ -47,7 +50,8 @@ class core {
     /**
      * ライブラリロード
      *
-     * @param
+     * @param   string  ライブラリ名
+     * @param   string  ライブラリの別名
      * @return
      */
     public function library($library, $alias = NULL) {
@@ -70,7 +74,8 @@ class core {
     /**
      * ビューロード
      *
-     * @param
+     * @param   string  ビューファイル名(.php を除く)
+     * @param   array   ビューファイルへ渡すパラメータ
      * @return
      */
     public function view($view, $params = array()) {
@@ -80,5 +85,20 @@ class core {
             include_once($fn);
         }
     }
+
+    /**
+     * リダイレクト
+     *
+     * @param   string URL
+     * @param   string ステータスコード
+     * @return
+     */
+    public function redirect($url, $status = '301') {
+        header('Location: ' . $url, true, $status);
+        exit;
+    }
+
+
+
 }
 

@@ -1,0 +1,42 @@
+<?php include "header.html"; ?>
+
+<div class="wrap">
+
+    <div class="contents" ng-controller="loginController">
+
+        <div class="login">
+
+            <div ng-bind="msg" ng-if="msg_flg"></div>
+
+            <form name="login_form" ng-submit="onsubmit()" novalidate>
+
+                <h3 class="title is-4">工数管理システム</h3>
+
+                <label class="label">メールアドレス</label>
+                <p class="control">
+                    <input class="input" type="text" name="email" ng-model="email" required>
+                </p>
+                <span ng-if="email_flg">メールアドレスを入力してください</span>
+
+                <label class="label">パスワード</label>
+                <p class="control">
+                    <input class="input" type="password" name="password" ng-model="password" required>
+                </p>
+                <span ng-if="password_flg">メールアドレスを入力してください</span>
+
+                <p class="control">
+                    <button class="button">送信</button>
+                </p>
+
+            </form>
+
+        </div>
+
+        <div>
+            <button ng-click="check();">チェック</button>
+        </div>
+    </div>
+
+</div>
+	
+<?php include "footer.html"; ?>
