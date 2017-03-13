@@ -1,7 +1,25 @@
 var app = angular.module('worklog', ['MyService']);
 
-app.controller('loginController', ['AppService', '$scope', '$http', function(AppService, $scope, $http) {
+// 共通コントローラ
+app.controller('baseController', ['AppService', '$scope', '$http', function(AppService, $scope, $http) {
 
+	// ログインチェック処理
+    var user = AppService.get_storage('user_login');
+    if (user == null) {
+        location.href = "login.html";
+    } else {
+        $scope.user = user;
+    }
+
+    // フォーム送信処理
+    $scope.logout = function() {
+        AppService.logout();
+    }
+
+}]);
+
+app.controller('loginController', ['AppService', '$scope', '$http', function(AppService, $scope, $http) {
+ 
     $scope.msg = '';
     $scope.email_flg = false;
     $scope.password_flg = false;
@@ -42,7 +60,7 @@ app.controller('loginController', ['AppService', '$scope', '$http', function(App
                         $scope.message = 'ログイン成功しました。';
                         $scope.message_flg = true;
                         AppService.set_storage('user_login', data['data']);
-                        location.href = "top.html";
+						window.setTimeout('location.href = "top.html";', 2000)
                     }
                 },
                 // 失敗時の処理
@@ -59,16 +77,12 @@ app.controller('loginController', ['AppService', '$scope', '$http', function(App
 
 
 app.controller('topController', ['AppService', '$scope', '$http', function(AppService, $scope, $http) {
-
-    var user = AppService.get_storage('user_login');
-    if (user == null) {
-        location.href = "login.html";
-    } else {
-        $scope.user = user;
-    }
-
-    // フォーム送信処理
-    $scope.logout = function() {
-        AppService.logout();
-    }
+	if ($scope.regist_date == undefined || $scope.regist_date == '') {
+		var obj = new Date();
+		var year = obj.getFullYear();
+		var month = "00" + (obj.getMonth() + 1);
+		var day = "00" + obj.getDate();
+		$scope.regist_date = year + '-' + month.substr(-2) + '-' + day.substr(-2);
+	}
 }]);
+

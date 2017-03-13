@@ -1,24 +1,35 @@
 <?php include "header.html"; ?>
 
-<div class="wrap">
+<div class="wrap" ng-controller="baseController">
 
     <div class="contents" ng-controller="topController">
 
         <div class="top">
 
-            <div class="columns is-flex-mobile  is-gapless">
-                <div class="column">
-                    <p class="left">工数管理システム</p>
+            <div class="columns is-flex-mobile is-gapless">
+                <div class="column is-three-quarters">
+                    <p class="left"><h2 class="title is-4">工数管理システム</h2></p>
                 </div>
                 <div class="column">
                     <p class="right">
-                        <span ng-bind="user.name"></span>
                         <span><button class="button" ng-click="logout()">ログアウト</button></span>
                     </p>
                 </div>
             </div>
 
+            <form name="top_form" ng-submit="onsubmit()" novalidate>
 
+                <label class="label">登録日</label>
+                <div class="control is-grouped">
+                    <p class="control is-expanded">
+                        <input class="input datetimepicker" type="text" name="regist_date" ng-model="regist_date">
+                    </p>
+                    <p class="control">
+                        <button class="button is-info">送信</button>
+                    </p>
+                </div>
+
+            </form>
 
 
         </div>
@@ -27,4 +38,30 @@
 
 </div>
 	
+
+<link rel="stylesheet" media="all" type="text/css" href="/js/datetimepicker/jquery.datetimepicker.css" />
+<script src="/js/datetimepicker/jquery.datetimepicker.js"></script>
+<script type="text/javascript">
+    $(function() {
+        // カレンダー選択js
+        var week = ['日','月','火','水','木','金','土'];
+        var month = ['1月','2月','3月','4月','5月','6月','7月','8月','9月','10月','11月','12月'];
+        $('.datetimepicker').datetimepicker({
+            lang: 'ja',
+            mouseWheel: false,
+            inverseMouseWheel: false,
+            scrollInput: false,
+            i18n:{
+                 ja:{
+                    months:month,
+                    dayOfWeek:week
+                 }
+            },
+            closeOnDateSelect:true,
+            timepicker:false,
+            format: 'Y-m-d',
+        });
+    });
+</script>
+
 <?php include "footer.html"; ?>
