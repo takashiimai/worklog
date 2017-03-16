@@ -5,7 +5,8 @@ app.controller('baseController', ['AppService', '$scope', '$http', function(AppS
 
 	// ログインチェック処理
     var user = AppService.get_storage('user_login');
-    if (user == null) {
+console.log(user);
+    if (user == null || user == "") {
         location.href = "login.html";
     } else {
         $scope.user = user;

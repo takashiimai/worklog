@@ -12,6 +12,7 @@ angular.module('MyService', [])
         };
 
         this.logout = function() {
-            alert("ログアウト");
+        	this.set_storage('user_login', '');
+	        location.href = "logout.html";
         };
 }]);

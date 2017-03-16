@@ -6,15 +6,27 @@
 
         <div class="top">
 
-            <div class="columns is-flex-mobile is-gapless">
-                <div class="column is-three-quarters">
-                    <p class="left"><h2 class="title is-4">工数管理システム</h2></p>
+            <div class="columns">
+                <div class="column is-2">
                 </div>
+                <div class="column">
+                    <h2 class="title is-4 center">工数管理システム</h2>
+                    <p class="center">
+                        {{user.name}}
+                    </p>
+                </div>
+                <div class="column is-2">
+                    <p class="right">
+                        <button class="button" ng-click="logout()"><span class="icon is-small"><i class="fa fa-sign-out"></i></span></button>
+                    </p>
+                </div>
+<!--
                 <div class="column">
                     <p class="right">
                         <span><button class="button" ng-click="logout()">ログアウト</button></span>
                     </p>
                 </div>
+-->
             </div>
 
             <form name="top_form" ng-submit="onsubmit()" novalidate>
@@ -24,9 +36,11 @@
                     <p class="control is-expanded">
                         <input class="input datetimepicker" type="text" name="regist_date" ng-model="regist_date">
                     </p>
+<!--
                     <p class="control">
                         <button class="button is-info">送信</button>
                     </p>
+-->
                 </div>
 
             </form>
@@ -60,6 +74,9 @@
             closeOnDateSelect:true,
             timepicker:false,
             format: 'Y-m-d',
+            onSelectDate:function(ct,$i) {
+                 console.log(ct.dateFormat('Y/m/d'));
+            }
         });
     });
 </script>
