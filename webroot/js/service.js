@@ -15,4 +15,28 @@ angular.module('MyService', [])
         	this.set_storage('user_login', '');
 	        location.href = "logout.html";
         };
+
+        // 登録した工数情報を取得
+        this.get_worklog = function(user_id, date) {
+            console.log("get_worklog");
+            $http({
+                method: 'GET',
+                url: '/worklog',
+                params: {
+                    user_id: user_id,
+                    date: date,
+                }
+            })
+            .then(
+                // 成功時の処理
+                function onSuccess(data) {
+                    console.log(data);
+                },
+                // 失敗時の処理
+                function onError(data) {
+                }
+            );
+        };
+
+
 }]);

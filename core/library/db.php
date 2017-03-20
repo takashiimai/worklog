@@ -145,5 +145,29 @@ class db {
         $stmt = $this->db->prepare($sql);
         $stmt->execute(array_merge($key, $parameters));
     }
+
+    /**
+     * トランザクション開始
+     *
+     * @param   
+     * @param   
+     * @return
+     */
+    public function trans_start() {
+        $query = "START TRANSACTION";
+        $this->query($query);
+    }
+
+    /**
+     * トランザクション終了
+     *
+     * @param   
+     * @param   
+     * @return
+     */
+    public function trans_commit() {
+        $query = "COMMIT";
+        $this->query($query);
+    }
 }
 

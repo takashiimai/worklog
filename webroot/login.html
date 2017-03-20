@@ -6,27 +6,31 @@
 
         <div class="login">
 
-            <form name="login_form" ng-submit="onsubmit()" novalidate>
+            <h3 class="ui header">工数管理システム ログイン</h3>
 
-                <h3 class="title is-3">工数管理システム ログイン</h3>
+            <form class="ui form" name="login_form" ng-submit="onsubmit()" novalidate>
 
-                <div class="notification is-warning" ng-bind="message" ng-if="message_flg"></div>
 
-                <label class="label">メールアドレス</label>
-                <p class="control">
+                <div class="ui positive message" ng-bind="message" ng-if="message_flg"></div>
+
+                <div class="field">
+                    <label class="label">メールアドレス</label>
                     <input class="input" type="text" name="email" ng-model="email" required>
-                </p>
-                <span ng-if="email_flg">メールアドレスを入力してください</span>
+                </div>
+                <div class="ui error message" ng-if="email_flg">
+                    <p>メールアドレスを入力してください</p>
+                </div>
 
-                <label class="label">パスワード</label>
-                <p class="control">
+
+                <div class="field">
+                    <label class="label">パスワード</label>
                     <input class="input" type="password" name="password" ng-model="password" required>
-                </p>
-                <span ng-if="password_flg">メールアドレスを入力してください</span>
+                </div>
+                <div class="ui error message" ng-if="password_flg">
+                    <p>パスワードを入力してください</p>
+                </div>
 
-                <p class="control">
-                    <button class="button is-info is-fullwidth">送信</button>
-                </p>
+                <button class="fluid ui button">送信</button>
 
             </form>
 
